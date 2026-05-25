@@ -1,7 +1,7 @@
-// ========== CONFIGURAÇÃO DO CHECKOUT ==========
-const CHECKOUT_URL = ""; // Coloque aqui o link do seu checkout (Kiwi, Hotmart, etc.)
+// Configuração do checkout
+const CHECKOUT_URL = ""; // Insira o link do checkout aqui
 
-// ========== FACEBOOK PIXEL ==========
+// Facebook Pixel
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -11,18 +11,21 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '123456789012345'); // ⚠️ SUBSTITUA PELO SEU PIXEL ID REAL
+// Substitua '123456789012345' pelo seu ID de pixel real
+fbq('init', '123456789012345');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', {
     content_name: 'Curso Esmaltaria Premium',
-    content_category: 'Beauty'
+    content_category: 'Beauty',
+    content_type: 'product'
 });
 
-// Fallback para navegadores com bloqueio
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('checkoutButton');
-    if (btn) {
-        btn.addEventListener('click', (e) => {
+// Fallback para navegadores com bloqueio de script
+document.addEventListener('DOMContentLoaded', function() {
+    // Botão de checkout
+    const checkoutBtn = document.getElementById('checkoutButton');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function(e) {
             e.preventDefault();
             if (CHECKOUT_URL && CHECKOUT_URL.trim() !== "") {
                 window.location.href = CHECKOUT_URL;
@@ -32,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // animação suave ao rolar
-    const items = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
+    // Animações suaves ao rolar a página
+    const animatedItems = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -42,11 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
-    items.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(12px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(el);
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+    animatedItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(15px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(item);
     });
 });
