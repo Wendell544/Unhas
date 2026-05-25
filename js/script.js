@@ -20,9 +20,8 @@ fbq('track', 'ViewContent', {
     content_type: 'product'
 });
 
-// Fallback para navegadores que bloqueiam o pixel (opcional)
+// ========== REDIRECIONAMENTO DO BOTÃO ==========
 document.addEventListener('DOMContentLoaded', function() {
-    // Botão de checkout
     const btn = document.getElementById('checkoutButton');
     if (btn) {
         btn.addEventListener('click', function(e) {
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animação suave de entrada (fade-up) para os principais elementos
+    // ========== ANIMAÇÃO SUAVE DE ENTRADA (FADE-UP) ==========
     const animatedElements = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -49,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(18px)';
-        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        el.style.transform = 'translateY(15px)';
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
         observer.observe(el);
     });
 });
