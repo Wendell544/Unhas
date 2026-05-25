@@ -1,7 +1,7 @@
-// ========== CONFIGURAÇÃO DO CHECKOUT ==========
-const CHECKOUT_URL = ""; // Insira aqui o link do seu checkout (Kiwi, Hotmart, Monetizze, etc.)
+// LINK DO CHECKOUT (coloque o seu)
+const CHECKOUT_URL = "";
 
-// ========== FACEBOOK PIXEL ==========
+// FACEBOOK PIXEL
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -11,16 +11,10 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-// ⚠️ ATENÇÃO: substitua '123456789012345' pelo seu PIXEL ID real
-fbq('init', '123456789012345');
+fbq('init', '123456789012345'); // SUBSTITUA PELO SEU ID
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {
-    content_name: 'Curso Esmaltaria Premium',
-    content_category: 'Beauty',
-    content_type: 'product'
-});
+fbq('track', 'ViewContent', { content_name: 'Curso Esmaltaria Premium' });
 
-// ========== REDIRECIONAMENTO DO BOTÃO ==========
 document.addEventListener('DOMContentLoaded', function() {
     const btn = document.getElementById('checkoutButton');
     if (btn) {
@@ -34,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ========== ANIMAÇÃO SUAVE DE ENTRADA (FADE-UP) ==========
-    const animatedElements = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
+    // animação suave
+    const elements = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -44,9 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
-
-    animatedElements.forEach(el => {
+    }, { threshold: 0.1 });
+    elements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(15px)';
         el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';

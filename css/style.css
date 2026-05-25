@@ -17,7 +17,6 @@ body {
     padding: 0 32px;
 }
 
-/* tipografia elegante */
 h1, h2, h3, .logo {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
@@ -63,7 +62,7 @@ h3 {
     color: #B88970;
 }
 
-/* VÍDEO - TAMANHO EXATO (não alterar) */
+/* VÍDEO - TAMANHO EXATO */
 .hero-video-section {
     margin: 1.5rem 0 1rem;
     text-align: center;
@@ -104,12 +103,12 @@ h3 {
     margin: 0.3rem auto;
 }
 
-/* seções mais compactas */
+/* seções compactas */
 .section-inner {
     padding: 1rem 0 0.5rem;
 }
 
-/* imagens redondas na lateral - layout premium */
+/* imagens redondas na lateral */
 .round-features {
     margin: 1rem 0;
 }
@@ -148,7 +147,7 @@ h3 {
     transform: scale(1.02);
 }
 
-/* cards informativos compactos */
+/* cards compactos */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -185,7 +184,6 @@ h3 {
     line-height: 1.4;
 }
 
-/* módulos e bônus */
 .card-premium {
     background: white;
     border-radius: 28px;
@@ -242,7 +240,6 @@ h3 {
     font-size: 0.8rem;
 }
 
-/* botão principal */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -256,7 +253,6 @@ h3 {
     text-decoration: none;
     transition: 0.2s;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .btn-primary:hover {
@@ -277,7 +273,6 @@ footer {
     color: #A28D80;
 }
 
-/* responsividade */
 @media (max-width: 768px) {
     .container {
         padding: 0 20px;
@@ -308,17 +303,5 @@ footer {
     .bonus-text {
         flex-direction: column;
         text-align: center;
-    }
-    .info-grid {
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .video-wrapper {
-        border-radius: 20px;
-    }
-    .info-card {
-        padding: 0.8rem;
     }
 }
