@@ -1,7 +1,7 @@
-// Configuração do checkout
-const CHECKOUT_URL = ""; // Insira o link do checkout aqui
+// ========== CONFIGURAÇÃO DO CHECKOUT ==========
+const CHECKOUT_URL = ""; // Insira aqui o link do seu checkout (Kiwi, Hotmart, Monetizze, etc.)
 
-// Facebook Pixel
+// ========== FACEBOOK PIXEL ==========
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -11,7 +11,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-// Substitua '123456789012345' pelo seu ID de pixel real
+// ⚠️ ATENÇÃO: substitua '123456789012345' pelo seu PIXEL ID real
 fbq('init', '123456789012345');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', {
@@ -20,12 +20,12 @@ fbq('track', 'ViewContent', {
     content_type: 'product'
 });
 
-// Fallback para navegadores com bloqueio de script
+// Fallback para navegadores que bloqueiam o pixel (opcional)
 document.addEventListener('DOMContentLoaded', function() {
     // Botão de checkout
-    const checkoutBtn = document.getElementById('checkoutButton');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', function(e) {
+    const btn = document.getElementById('checkoutButton');
+    if (btn) {
+        btn.addEventListener('click', function(e) {
             e.preventDefault();
             if (CHECKOUT_URL && CHECKOUT_URL.trim() !== "") {
                 window.location.href = CHECKOUT_URL;
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animações suaves ao rolar a página
-    const animatedItems = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
+    // Animação suave de entrada (fade-up) para os principais elementos
+    const animatedElements = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -45,12 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
 
-    animatedItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(15px)';
-        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(item);
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        observer.observe(el);
     });
 });
