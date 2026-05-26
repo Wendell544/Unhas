@@ -1,4 +1,4 @@
-// LINK DO CHECKOUT (coloque o seu link real do Hotmart, Kiwify, etc.)
+// LINK DO CHECKOUT (coloque seu link real do Hotmart, Kiwify, etc.)
 const CHECKOUT_URL = "";
 
 // FACEBOOK PIXEL (substitua pelo seu ID real)
@@ -11,7 +11,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '123456789012345'); // ATENÇÃO: coloque seu ID aqui
+fbq('init', '123456789012345'); // ATENÇÃO: coloque seu ID do Pixel aqui
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', { content_name: 'Curso Esmaltaria Premium' });
 
@@ -29,36 +29,93 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animação suave de entrada
-    const elements = document.querySelectorAll('.feature-row, .info-card, .bonus-area, .card-premium');
-    
-    elements.forEach(el => {
-        if (!el.style.opacity) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(15px)';
-            el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-        }
-    });
-    
+    // Animação de reveal ao scroll
+    const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('revealed');
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
     
-    elements.forEach(el => observer.observe(el));
+    reveals.forEach(el => observer.observe(el));
     
-    // Fallback
+    // Fallback para elementos que não ativarem o observer
     setTimeout(() => {
-        elements.forEach(el => {
-            if (el.style.opacity === '0') {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
+        reveals.forEach(el => {
+            if (!el.classList.contains('revealed')) {
+                el.classList.add('revealed');
             }
         });
-    }, 1500);
+    }, 1000);
+
+    // Carrossel premium: destaca o card central dinamicamente
+    const carousel = document.getElementById('carouselContainer');
+    const cards = document.querySelectorAll('.carousel-card');
+    
+    function highlightCenterCard() {
+        if (!carousel) return;
+        const containerRect = carousel.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
+        let closestCard = null;
+        let minDist = Infinity;
+        
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+            const dist = Math.abs(cardCenter - centerX);
+            if (dist < minDist) {
+                minDist = dist;
+                closestCard = card;
+            }
+        });
+        
+        cards.forEach(card => card.classList.remove('active-card'));
+        if (closestCard) closestCard.classList.add('active-card');
+    }
+    
+    if (carousel) {
+        carousel.addEventListener('scroll', () => {
+            requestAnimationFrame(highlightCenterCard);
+        });
+        window.addEventListener('resize', highlightCenterCard);
+        highlightCenterCard();
+    }
+    
+    // Efeito de "grab" suave no carrossel
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        carouselContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carouselContainer.style.cursor = 'grabbing';
+            startX = e.pageX - carouselContainer.offsetLeft;
+            scrollLeft = carouselContainer.scrollLeft;
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            carouselContainer.style.cursor = 'grab';
+        });
+        
+        carouselContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            carouselContainer.style.cursor = 'grab';
+        });
+        
+        carouselContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carouselContainer.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            carouselContainer.scrollLeft = scrollLeft - walk;
+        });
+        
+        carouselContainer.style.cursor = 'grab';
+    }
 });
