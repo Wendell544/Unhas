@@ -62,7 +62,6 @@ h3 {
     color: #B88970;
 }
 
-/* VÍDEO - TAMANHO EXATO */
 .hero-video-section {
     margin: 1.5rem 0 1rem;
     text-align: center;
@@ -103,12 +102,10 @@ h3 {
     margin: 0.3rem auto;
 }
 
-/* seções compactas */
 .section-inner {
     padding: 1rem 0 0.5rem;
 }
 
-/* imagens redondas na lateral */
 .round-features {
     margin: 1rem 0;
 }
@@ -147,7 +144,6 @@ h3 {
     transform: scale(1.02);
 }
 
-/* cards compactos */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
