@@ -103,14 +103,15 @@ h2 i {
     color: transparent;
 }
 
+/* VÍDEO MAIOR - OCUPA QUASE TODA LARGURA DO CONTAINER */
 .hero-video-section {
     margin: 1.5rem 0 2rem;
     text-align: center;
 }
 
 .video-wrapper {
-    max-width: 1000px;
     width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     border-radius: 32px;
     overflow: hidden;
@@ -133,6 +134,7 @@ h2 i {
     letter-spacing: -0.02em;
 }
 
+/* FEATURE ROWS: TEXTO E IMAGEM LADO A LADO PERFEITAMENTE */
 .round-features {
     margin: 2rem 0 1rem;
 }
@@ -143,7 +145,7 @@ h2 i {
     justify-content: space-between;
     gap: 2rem;
     margin-bottom: 2rem;
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 1.5rem;
     background: rgba(255, 250, 245, 0.5);
     backdrop-filter: blur(2px);
     border-radius: 80px;
@@ -160,6 +162,7 @@ h2 i {
 
 .feature-text {
     flex: 2;
+    padding-right: 1rem;
 }
 
 .feature-text h3 {
@@ -183,10 +186,11 @@ h2 i {
     line-height: 1.4;
 }
 
+/* IMAGEM REDONDA MAIOR E COM MAIS DESTAQUE */
 .feature-round-img {
     flex-shrink: 0;
-    width: 85px;
-    height: 85px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 15px 25px -10px rgba(86, 55, 45, 0.2), 0 0 0 3px #FFF6F0, 0 0 0 5px rgba(217, 184, 164, 0.4);
@@ -198,6 +202,7 @@ h2 i {
     filter: brightness(1.02) contrast(1.02);
 }
 
+/* INFO CARDS PREMIUM */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -372,7 +377,7 @@ h2 i {
     grid-column: span 2;
 }
 
-/* CARROSSEL WHATSAPP PREMIUM */
+/* CARROSSEL WHATSAPP */
 .carousel-premium {
     margin: 3rem 0 2rem;
     position: relative;
@@ -529,31 +534,78 @@ footer {
     transform: translateY(0);
 }
 
+/* RESPONSIVIDADE PERFEITA */
 @media (max-width: 768px) {
     .container {
         padding: 0 20px;
     }
+    
     .feature-row {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
         border-radius: 40px;
+        padding: 1.2rem;
     }
+    
+    .feature-text {
+        padding-right: 0;
+    }
+    
+    .feature-text h3 {
+        justify-content: center;
+    }
+    
     .feature-round-img {
-        width: 75px;
-        height: 75px;
+        width: 85px;
+        height: 85px;
+        margin-top: 0.5rem;
     }
+    
     h2 {
         font-size: 1.7rem;
     }
+    
     .hero-text h1 {
         font-size: 1.8rem;
     }
+    
     .gallery-grid {
         gap: 0.8rem;
         grid-template-columns: repeat(2, 1fr);
     }
+    
     .carousel-card {
         flex: 0 0 200px;
+    }
+    
+    .bonus-area {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .bonus-text {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .feature-round-img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .info-grid {
+        gap: 1rem;
+    }
+    
+    .btn-primary {
+        padding: 12px 24px;
+        font-size: 0.9rem;
     }
 }
