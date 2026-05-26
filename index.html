@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Nail Atelier | Curso Premium de Esmaltaria</title>
-    <!-- CSS externo - mesmo diretório -->
+    
+    <!-- CSS externo -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Fallback inline caso o CSS externo não carregue -->
+    <style>
+        /* Fallback básico para garantir legibilidade mesmo sem o style.css */
+        body { font-family: sans-serif; margin: 1rem; background: #FFF9F4; }
+        .container { max-width: 1200px; margin: auto; }
+        img, video { max-width: 100%; height: auto; }
+        .btn-primary { display: inline-block; background: #E2C7B9; padding: 12px 28px; border-radius: 48px; text-decoration: none; color: #3F2A24; font-weight: bold; }
+        .feature-round-img { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; }
+    </style>
+    
     <!-- Google Fonts e Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,7 +31,7 @@
             <div class="badge">estúdio premium</div>
         </div>
 
-        <!-- VÍDEO - tamanho exato preservado -->
+        <!-- VÍDEO -->
         <div class="hero-video-section">
             <div class="video-wrapper">
                 <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/3997797/pexels-photo-3997797.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
@@ -33,7 +45,7 @@
             </div>
         </div>
 
-        <!-- IMAGENS REDONDAS NA LATERAL (compacto) -->
+        <!-- IMAGENS REDONDAS NA LATERAL -->
         <div class="round-features">
             <div class="feature-row">
                 <div class="feature-text">
